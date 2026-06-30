@@ -517,7 +517,7 @@ export default function LandingPage() {
                 <div className="flex flex-col justify-center h-full text-center">
                   <span className="font-serif text-3xl text-luxury-gold block mb-1">15+</span>
                   <span className="font-sans text-[9px] text-gray-500 uppercase tracking-widest">
-                    Years in Manhattan
+                    Years in New York
                   </span>
                 </div>
               </div>
