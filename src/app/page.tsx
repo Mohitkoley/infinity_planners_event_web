@@ -247,8 +247,8 @@ export default function LandingPage() {
       <nav
         id="main-nav"
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 md:px-8 flex justify-between items-center ${navScrolled || mobileMenuOpen
-            ? "py-4 bg-luxury-dark border-b border-luxury-gold/20 backdrop-blur-md"
-            : "py-6 bg-transparent"
+          ? "py-4 bg-luxury-dark border-b border-luxury-gold/20 backdrop-blur-md"
+          : "py-6 bg-transparent"
           }`}
       >
         <div className="flex items-center">
@@ -639,7 +639,7 @@ export default function LandingPage() {
             <p className="text-[10px] uppercase tracking-widest">© {new Date().getFullYear()} Infinity Planners. All Rights Reserved.</p>
           </div>
           <div className="flex space-x-8 text-[10px] tracking-widest uppercase">
-            <Link className="hover:text-luxury-gold transition-colors" href="/admin/login">Admin Panel</Link>
+            {/* <Link className="hover:text-luxury-gold transition-colors" href="/admin/login">Admin Panel</Link> */}
             <Link className="hover:text-luxury-gold transition-colors" href="#">Privacy</Link>
             <Link className="hover:text-luxury-gold transition-colors" href="#">Terms</Link>
             <a className="hover:text-luxury-gold transition-colors" href="#">Instagram</a>
