@@ -524,9 +524,19 @@ export default function LandingPage() {
                 href="#contact"
               >
                 <span>Inquire For Full List</span>
-                <span className="material-symbols-outlined ml-2 transform group-hover:translate-x-1.5 transition-transform text-[16px]">
-                  arrow_forward
-                </span>
+                <svg
+                  aria-hidden="true"
+                  className="ml-2 h-4 w-4 transform transition-transform group-hover:translate-x-1.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m13 6 6 6-6 6" />
+                </svg>
               </Link>
             </div>
           </div>

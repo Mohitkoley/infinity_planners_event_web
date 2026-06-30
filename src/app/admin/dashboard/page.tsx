@@ -1280,9 +1280,19 @@ function StudioDetailsPanel({ email, phone, address, officeName }: { email: stri
           className="mt-6 flex items-center gap-2 text-primary-container font-bold group hover:underline text-sm uppercase tracking-wider"
         >
           <span>Visit Landing Page</span>
-          <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
-            arrow_forward
-          </span>
+          <svg
+            aria-hidden="true"
+            className="h-4 w-4 transition-transform group-hover:translate-x-1"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M5 12h14" />
+            <path d="m13 6 6 6-6 6" />
+          </svg>
         </Link>
       </section>
     </div>
