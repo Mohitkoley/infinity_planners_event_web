@@ -1,0 +1,28 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e2]: This XML file does not appear to have any style information associated with it. The document tree is shown below.
+  - generic [ref=f1e4]:
+    - generic [ref=f1e7]:
+      - text: <urlset
+      - generic [ref=f1e8]: xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      - text: ">"
+    - generic [ref=f1e10]:
+      - generic [ref=f1e13]: <url>
+      - generic [ref=f1e14]:
+        - generic [ref=f1e15]:
+          - generic [ref=f1e16]: <loc>
+          - text: https://infinityplanners.nyc
+          - generic [ref=f1e17]: </loc>
+        - generic [ref=f1e18]:
+          - generic [ref=f1e19]: <lastmod>
+          - text: 2026-06-30T09:41:55.479Z
+          - generic [ref=f1e20]: </lastmod>
+        - generic [ref=f1e21]:
+          - generic [ref=f1e22]: <changefreq>
+          - text: monthly
+          - generic [ref=f1e23]: </changefreq>
+        - generic [ref=f1e24]:
+          - generic [ref=f1e25]: <priority>
+          - text: "1"
+          - generic [ref=f1e26]: </priority>
+      - generic [ref=f1e28]: </url>
+    - generic [ref=f1e30]: </urlset>
