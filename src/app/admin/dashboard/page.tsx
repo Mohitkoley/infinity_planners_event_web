@@ -427,11 +427,21 @@ export default function AdminDashboardPage() {
           
           <div className="flex items-center gap-8">
             <div className="relative">
-              <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[16px]">
-                search
-              </span>
+              <svg
+                aria-hidden="true"
+                className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary pointer-events-none"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="11" cy="11" r="7" />
+                <path d="m16.5 16.5 4 4" />
+              </svg>
               <input
-                className="bg-surface-container border-none py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-primary w-64 transition-all focus:w-80 rounded-none text-on-surface"
+                className="bg-surface-container border-none py-2 pl-11 pr-4 text-sm focus:ring-1 focus:ring-primary w-64 transition-all focus:w-80 rounded-none text-on-surface"
                 placeholder={activeTab === "leads" ? "Search leads..." : "Search scheduled events..."}
                 type="text"
                 value={activeTab === "leads" ? leadsSearch : activeTab === "events" ? eventsSearch : ""}
