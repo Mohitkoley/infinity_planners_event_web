@@ -321,7 +321,7 @@ export default function LandingPage() {
       )}
 
       {/* Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black">
+      <section className="relative h-screen w-full overflow-hidden bg-black">
         {/* Floating Gold Dust Simulation */}
         <canvas ref={canvasRef} className="absolute inset-0 z-10 opacity-60 pointer-events-none"></canvas>
 
@@ -334,34 +334,38 @@ export default function LandingPage() {
           />
         </div>
 
-        {/* Hero content overlay */}
-        <div className="relative z-20 text-center px-4 max-w-5xl">
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-tight reveal">
-            Bespoke New York Events,<br />
-            <span className="italic text-luxury-gold">Masterfully Orchestrated</span>
-          </h1>
-          <p className="text-white/80 text-sm md:text-base tracking-[0.3em] uppercase font-light mb-12 reveal transition-delay-200">
-            Infinity Planners — Redefining Sophistication
-          </p>
-          <div className="reveal transition-delay-400">
+        <div className="relative z-20 h-full flex flex-col">
+          <div className="flex-1 flex items-center justify-center px-4">
+            <div className="text-center max-w-5xl">
+              <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-tight reveal">
+                Bespoke New York Events,<br />
+                <span className="italic text-luxury-gold">Masterfully Orchestrated</span>
+              </h1>
+              <p className="text-white/80 text-sm md:text-base tracking-[0.3em] uppercase font-light mb-12 reveal transition-delay-200">
+                Infinity Planners — Redefining Sophistication
+              </p>
+              <div className="reveal transition-delay-400">
+                <a
+                  className="inline-block border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-black px-10 py-4 tracking-widest uppercase text-xs transition-all duration-500"
+                  href="#services"
+                >
+                  Discover Our Craft
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-center pb-6">
             <a
-              className="inline-block border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-black px-10 py-4 tracking-widest uppercase text-xs transition-all duration-500"
               href="#services"
+              className="block animate-bounce cursor-pointer"
             >
-              Discover Our Craft
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/50 w-8 h-8">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
             </a>
           </div>
         </div>
-
-        {/* Scroll indicator chevron */}
-        <a
-          href="#services"
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white text-center animate-bounce cursor-pointer"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="text-white/50 w-8 h-8">
-            <path d="m6 9 6 6 6-6"></path>
-          </svg>
-        </a>
       </section>
 
       {/* Services Grid Section */}

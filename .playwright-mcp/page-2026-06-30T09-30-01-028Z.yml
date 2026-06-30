@@ -1,0 +1,115 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - navigation [ref=f3e3]:
+      - link "Infinity Planners" [ref=f3e5] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f3e6]:
+        - link "Services" [ref=f3e7] [cursor=pointer]:
+          - /url: "#services"
+        - link "NYC Portfolio" [ref=f3e8] [cursor=pointer]:
+          - /url: "#portfolio"
+        - link "Venues" [ref=f3e9] [cursor=pointer]:
+          - /url: "#venues"
+      - link "Contact Us" [ref=f3e11] [cursor=pointer]:
+        - /url: "#contact"
+    - generic [ref=f3e12]:
+      - img "Luxury Event Hall" [ref=f3e14]
+      - generic [ref=f3e15]:
+        - generic [ref=f3e17]:
+          - heading "Bespoke New York Events, Masterfully Orchestrated" [level=1] [ref=f3e18]:
+            - text: Bespoke New York Events,
+            - text: Masterfully Orchestrated
+          - paragraph [ref=f3e19]: Infinity Planners — Redefining Sophistication
+          - link "Discover Our Craft" [ref=f3e21] [cursor=pointer]:
+            - /url: "#services"
+        - link [ref=f3e23] [cursor=pointer]:
+          - /url: "#services"
+          - img [ref=f3e24]
+    - generic [ref=f3e27]:
+      - heading "Our Expertise" [level=2] [ref=f3e29]
+      - generic [ref=f3e31]:
+        - generic [ref=f3e32]:
+          - heading "Corporate Events" [level=3] [ref=f3e36]
+          - paragraph [ref=f3e37]: Elevating brand narratives through meticulously designed galas, summits, and executive retreats across NYC's premier landmarks.
+        - generic [ref=f3e38]:
+          - heading "Luxury Weddings" [level=3] [ref=f3e42]
+          - paragraph [ref=f3e43]: Transforming visions into timeless celebrations. We orchestrate intimate ceremonies and grand ballroom receptions with effortless grace.
+        - generic [ref=f3e44]:
+          - heading "Private Galas" [level=3] [ref=f3e48]
+          - paragraph [ref=f3e49]: Exclusive social gatherings curated for the discerning host, where every detail reflects a commitment to absolute excellence.
+    - generic [ref=f3e51]:
+      - generic [ref=f3e52]:
+        - generic [ref=f3e53]:
+          - paragraph [ref=f3e54]: Selected Works
+          - heading "NYC Portfolio" [level=2] [ref=f3e55]
+        - link "Inquire For Full List arrow_forward" [ref=f3e57] [cursor=pointer]:
+          - /url: "#contact"
+          - generic [ref=f3e58]: Inquire For Full List
+          - generic [ref=f3e59]: arrow_forward
+      - generic [ref=f3e60]:
+        - generic [ref=f3e61] [cursor=pointer]:
+          - img "Plaza Hotel Gala" [ref=f3e62]
+          - generic [ref=f3e63]:
+            - heading "The Plaza Gala" [level=4] [ref=f3e64]
+            - paragraph [ref=f3e65]: Upper East Side
+        - generic [ref=f3e66] [cursor=pointer]:
+          - img "Soho Rooftop Event" [ref=f3e67]
+          - generic [ref=f3e68]:
+            - heading "SoHo Skylines" [level=4] [ref=f3e69]
+            - paragraph [ref=f3e70]: Creative Loft
+    - generic [ref=f3e72]:
+      - paragraph [ref=f3e73]: "\"We do not merely plan events. We architect experiences that linger in the memory long after the music fades.\""
+      - paragraph [ref=f3e75]: Infinity Planners Philosophy
+    - generic [ref=f3e78]:
+      - generic [ref=f3e79]:
+        - img "Architectural NYC Skyline Crown" [ref=f3e81]
+        - generic [ref=f3e83]:
+          - generic [ref=f3e84]: 15+
+          - generic [ref=f3e85]: Years in Manhattan
+      - generic [ref=f3e86]:
+        - generic [ref=f3e87]: Exclusive Venues
+        - heading "Architectural Venues Staged to Perfection" [level=2] [ref=f3e88]
+        - paragraph [ref=f3e89]: From historical Madison Avenue ballrooms to open SoHo industrial lofts, we collaborate with elite Manhattan structures to draft, coordinate, and execute custom events. We hold exclusive staging access, allowing you to curate spaces normally inaccessible to the public.
+        - paragraph [ref=f3e90]: "\"Our canvas is the city of New York. The architecture tells the story, we compose the soundtrack.\""
+        - link "Inquire For Venue Partnerships" [ref=f3e91] [cursor=pointer]:
+          - /url: "#contact"
+    - generic [ref=f3e92]:
+      - generic [ref=f3e93]:
+        - img "Manhattan Aerial" [ref=f3e94]
+        - generic [ref=f3e96]:
+          - heading "Visit Our Studio" [level=3] [ref=f3e97]
+          - paragraph [ref=f3e98]: 545 Madison Avenue, 12th Floor New York, NY 10022
+          - generic [ref=f3e99]:
+            - paragraph [ref=f3e100]: hello@infinityplanners.nyc
+            - paragraph [ref=f3e101]: +1 (516) 344-7239
+      - generic [ref=f3e103]:
+        - heading "Start Your Journey" [level=2] [ref=f3e104]
+        - paragraph [ref=f3e105]: Share your vision with us and we will orchestrate a proposal that exceeds all expectations.
+        - generic [ref=f3e106]:
+          - textbox "Full Name" [ref=f3e108]
+          - textbox "Email Address" [ref=f3e110]
+          - combobox [ref=f3e112] [cursor=pointer]:
+            - option "TYPE OF EVENT" [disabled] [selected]
+            - option "Corporate Gala"
+            - option "Luxury Wedding"
+            - option "Private Celebration"
+            - option "Other"
+          - textbox "Describe Your Vision" [ref=f3e114]
+          - button "Send Inquiry" [ref=f3e115] [cursor=pointer]
+    - contentinfo [ref=f3e116]:
+      - generic [ref=f3e117]:
+        - generic [ref=f3e118]:
+          - generic [ref=f3e119]: Infinity Planners
+          - paragraph [ref=f3e120]: © 2026 Infinity Planners. All Rights Reserved.
+        - generic [ref=f3e121]:
+          - link "Admin Panel" [ref=f3e122] [cursor=pointer]:
+            - /url: /admin/login
+          - link "Privacy" [ref=f3e123] [cursor=pointer]:
+            - /url: "#"
+          - link "Terms" [ref=f3e124] [cursor=pointer]:
+            - /url: "#"
+          - link "Instagram" [ref=f3e125] [cursor=pointer]:
+            - /url: "#"
+  - button "Open Next.js Dev Tools" [ref=f3e131] [cursor=pointer]:
+    - img [ref=f3e132]
+  - alert [ref=f3e135]
