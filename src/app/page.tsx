@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { createLeadAction, getConfigAction } from "./actions";
+import { createLeadAction, getConfigAction, getEventTypesAction } from "./actions";
 
 interface Lead {
   id: string;
@@ -68,6 +68,7 @@ export default function LandingPage() {
   const [siteEmail, setSiteEmail] = useState("hello@infinityplanners.nyc");
   const [sitePhone, setSitePhone] = useState("+1 (516) 344-7239");
   const [siteAddress, setSiteAddress] = useState("545 Madison Avenue, 12th Floor\nNew York, NY 10022");
+  const [eventTypeOptions, setEventTypeOptions] = useState(["Luxury Wedding", "Corporate Gala", "Private Celebration", "Other"]);
 
   useEffect(() => {
     // Load config from database config table
@@ -77,6 +78,7 @@ export default function LandingPage() {
         setSiteEmail(configData.email);
         setSitePhone(configData.phone);
         setSiteAddress(configData.address);
+        setEventTypeOptions(await getEventTypesAction());
       } catch (err) {
         console.error("Failed to load site branding configuration from database:", err);
       }
@@ -676,10 +678,11 @@ export default function LandingPage() {
                   onChange={(e) => setEventType(e.target.value)}
                 >
                   <option disabled value="">TYPE OF EVENT</option>
-                  <option value="Corporate Gala" className="bg-white text-luxury-dark uppercase">Corporate Gala</option>
-                  <option value="Luxury Wedding" className="bg-white text-luxury-dark uppercase">Luxury Wedding</option>
-                  <option value="Private Celebration" className="bg-white text-luxury-dark uppercase">Private Celebration</option>
-                  <option value="Other" className="bg-white text-luxury-dark uppercase">Other</option>
+                  {eventTypeOptions.map((type) => (
+                    <option key={type} value={type} className="bg-white text-luxury-dark uppercase">
+                      {type}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="relative group">

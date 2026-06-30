@@ -1,7 +1,30 @@
 "use server";
 
-import { db, leads, users, config, events, type Lead, type User, type Config, type Event } from "@/db";
-import { desc, eq } from "drizzle-orm";
+import { db, leads, users, config, events, eventTypes as eventTypesTable, type Lead, type User, type Config, type Event } from "@/db";
+import { asc, desc, eq } from "drizzle-orm";
+
+const DEFAULT_EVENT_TYPES = ["Luxury Wedding", "Corporate Gala", "Private Celebration", "Other"];
+
+function normalizeEventTypes(value: string[] | string | null | undefined): string[] {
+  const rawTypes = Array.isArray(value)
+    ? value
+    : (() => {
+        if (!value) return DEFAULT_EVENT_TYPES;
+        try {
+          const parsed = JSON.parse(value);
+          return Array.isArray(parsed) ? parsed : DEFAULT_EVENT_TYPES;
+        } catch {
+          return DEFAULT_EVENT_TYPES;
+        }
+      })();
+
+  const uniqueTypes = rawTypes
+    .map((type) => String(type).trim())
+    .filter(Boolean)
+    .filter((type, index, list) => list.indexOf(type) === index);
+
+  return uniqueTypes.length > 0 ? uniqueTypes : DEFAULT_EVENT_TYPES;
+}
 
 // 1. Seed Data Definitions
 const SEED_LEADS = [
@@ -188,6 +211,42 @@ export async function updateConfigAction(data: {
     .returning();
 
   return updated;
+}
+
+export async function getEventTypesAction(): Promise<string[]> {
+  let rows = await db
+    .select()
+    .from(eventTypesTable)
+    .orderBy(asc(eventTypesTable.sortOrder), asc(eventTypesTable.name));
+
+  if (rows.length === 0) {
+    await db.insert(eventTypesTable).values(
+      DEFAULT_EVENT_TYPES.map((name, index) => ({
+        name,
+        sortOrder: index,
+      }))
+    );
+    rows = await db
+      .select()
+      .from(eventTypesTable)
+      .orderBy(asc(eventTypesTable.sortOrder), asc(eventTypesTable.name));
+  }
+
+  return normalizeEventTypes(rows.map((row) => row.name));
+}
+
+export async function updateEventTypesAction(eventTypes: string[]): Promise<string[]> {
+  const normalizedTypes = normalizeEventTypes(eventTypes);
+
+  await db.delete(eventTypesTable);
+  await db.insert(eventTypesTable).values(
+    normalizedTypes.map((name, index) => ({
+      name,
+      sortOrder: index,
+    }))
+  );
+
+  return getEventTypesAction();
 }
 
 // ==========================================

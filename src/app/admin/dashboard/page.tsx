@@ -9,10 +9,12 @@ import {
   updateLeadAction,
   deleteLeadAction,
   getConfigAction,
+  getEventTypesAction,
   getEventsAction,
   createEventAction,
   deleteEventAction,
   updateEventAction,
+  updateEventTypesAction,
 } from "@/app/actions";
 
 interface Lead {
@@ -42,7 +44,7 @@ interface EventItem {
 
 export default function AdminDashboardPage() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"leads" | "events">("leads");
+  const [activeTab, setActiveTab] = useState<"leads" | "events" | "settings">("leads");
 
   // Leads state
   const [leads, setLeads] = useState<Lead[]>([]);
@@ -63,6 +65,10 @@ export default function AdminDashboardPage() {
   const [studioPhone, setStudioPhone] = useState("+1 (516) 344-7239");
   const [studioAddress, setStudioAddress] = useState("545 Madison Avenue, New York, NY 10022");
   const [studioOffice, setStudioOffice] = useState("Manhattan Office");
+  const [eventTypeOptions, setEventTypeOptions] = useState(["Luxury Wedding", "Corporate Gala", "Private Celebration", "Other"]);
+  const [draftEventTypes, setDraftEventTypes] = useState(["Luxury Wedding", "Corporate Gala", "Private Celebration", "Other"]);
+  const [newEventTypeName, setNewEventTypeName] = useState("");
+  const [settingsSaved, setSettingsSaved] = useState(false);
 
   // Lead modal state
   const [newLeadModalOpen, setNewLeadModalOpen] = useState(false);
@@ -91,7 +97,14 @@ export default function AdminDashboardPage() {
       setStudioAddress(configData.address);
       setStudioOffice(configData.officeName);
 
-      // 2. Fetch leads
+      // 2. Fetch event type options from the dedicated event_types table
+      const dbEventTypes = await getEventTypesAction();
+      setEventTypeOptions(dbEventTypes);
+      setDraftEventTypes(dbEventTypes);
+      setNewType((currentType) => dbEventTypes.includes(currentType) ? currentType : dbEventTypes[0]);
+      setEventType((currentType) => dbEventTypes.includes(currentType) ? currentType : dbEventTypes[0]);
+
+      // 3. Fetch leads
       const dbLeads = await getLeadsAction();
       const mappedLeads: Lead[] = dbLeads.map((l) => ({
         id: l.id,
@@ -107,7 +120,7 @@ export default function AdminDashboardPage() {
       }));
       setLeads(mappedLeads);
 
-      // 3. Fetch events
+      // 4. Fetch events
       const dbEvents = await getEventsAction();
       const mappedEvents: EventItem[] = dbEvents.map((ev) => ({
         id: ev.id,
@@ -183,7 +196,7 @@ export default function AdminDashboardPage() {
 
       setNewName("");
       setNewEmail("");
-      setNewType("Luxury Wedding");
+      setNewType(eventTypeOptions[0]);
       setNewDate("");
       setNewGuests("");
       setNewMessage("");
@@ -235,7 +248,7 @@ export default function AdminDashboardPage() {
       setEventClientName("");
       setEventClientEmail("");
       setEventDate("");
-      setEventType("Luxury Wedding");
+      setEventType(eventTypeOptions[0]);
       setEventNotes("");
       setNewEventModalOpen(false);
 
@@ -275,6 +288,39 @@ export default function AdminDashboardPage() {
   const totalEvents = eventsList.length;
   const scheduledEventsCount = eventsList.filter((e) => e.status === "Scheduled").length;
   const completedEventsCount = eventsList.filter((e) => e.status === "Completed").length;
+
+  const handleLogout = () => {
+    router.push("/admin/login");
+  };
+
+  const handleAddEventType = () => {
+    const trimmedType = newEventTypeName.trim();
+    if (!trimmedType || draftEventTypes.includes(trimmedType)) return;
+
+    setDraftEventTypes([...draftEventTypes, trimmedType]);
+    setNewEventTypeName("");
+    setSettingsSaved(false);
+  };
+
+  const handleRemoveEventType = (typeToRemove: string) => {
+    if (draftEventTypes.length <= 1) return;
+
+    setDraftEventTypes(draftEventTypes.filter((type) => type !== typeToRemove));
+    setSettingsSaved(false);
+  };
+
+  const handleSaveEventTypes = async () => {
+    try {
+      const savedTypes = await updateEventTypesAction(draftEventTypes);
+      setEventTypeOptions(savedTypes);
+      setDraftEventTypes(savedTypes);
+      setNewType((currentType) => savedTypes.includes(currentType) ? currentType : savedTypes[0]);
+      setEventType((currentType) => savedTypes.includes(currentType) ? currentType : savedTypes[0]);
+      setSettingsSaved(true);
+    } catch (err) {
+      console.error("Failed to update event types:", err);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background font-body-md flex">
@@ -321,16 +367,34 @@ export default function AdminDashboardPage() {
             </span>
             <span className="font-nav-link text-nav-link">Events</span>
           </button>
+          <button
+            onClick={() => {
+              setActiveTab("settings");
+              setSelectedLead(null);
+              setSelectedEvent(null);
+            }}
+            className={`w-full flex items-center gap-3 px-4 py-3 cursor-pointer transition-colors duration-200 text-left ${
+              activeTab === "settings"
+                ? "text-primary font-semibold bg-primary-container/10 border-l-2 border-primary"
+                : "text-secondary hover:bg-surface-container-high"
+            }`}
+          >
+            <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: activeTab === "settings" ? "'FILL' 1" : "" }}>
+              tune
+            </span>
+            <span className="font-nav-link text-nav-link">Settings</span>
+          </button>
         </nav>
-        <div className="mt-auto px-4">
-          {activeTab === "leads" ? (
+        <div className="mt-auto px-4 space-y-3">
+          {activeTab === "leads" && (
             <button
               onClick={() => setNewLeadModalOpen(true)}
               className="w-full py-4 bg-primary-container text-white font-label-caps text-label-caps hover:bg-[#C09B2F] transition-all duration-300 uppercase tracking-widest cursor-pointer"
             >
               New Lead
             </button>
-          ) : (
+          )}
+          {activeTab === "events" && (
             <button
               onClick={() => setNewEventModalOpen(true)}
               className="w-full py-4 bg-primary text-white font-label-caps text-label-caps hover:bg-[#C09B2F] transition-all duration-300 uppercase tracking-widest cursor-pointer"
@@ -338,6 +402,12 @@ export default function AdminDashboardPage() {
               New Event
             </button>
           )}
+          <button
+            onClick={handleLogout}
+            className="w-full py-3 border border-outline-variant text-secondary font-label-caps text-label-caps hover:border-error hover:text-error transition-all duration-300 uppercase tracking-widest cursor-pointer"
+          >
+            Logout
+          </button>
         </div>
       </aside>
 
@@ -347,7 +417,11 @@ export default function AdminDashboardPage() {
         <header className="sticky top-0 h-20 bg-surface/85 backdrop-blur-md border-b border-outline-variant flex items-center justify-between px-8 z-30">
           <div className="flex items-center gap-4">
             <h2 className="font-headline-sm text-headline-sm text-primary uppercase tracking-wider">
-              {activeTab === "leads" ? "Leads Management" : "Events Scheduling"}
+              {activeTab === "leads"
+                ? "Leads Management"
+                : activeTab === "events"
+                ? "Events Scheduling"
+                : "Site Settings"}
             </h2>
           </div>
           
@@ -360,8 +434,9 @@ export default function AdminDashboardPage() {
                 className="bg-surface-container border-none py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-primary w-64 transition-all focus:w-80 rounded-none text-on-surface"
                 placeholder={activeTab === "leads" ? "Search leads..." : "Search scheduled events..."}
                 type="text"
-                value={activeTab === "leads" ? leadsSearch : eventsSearch}
-                onChange={(e) => activeTab === "leads" ? setLeadsSearch(e.target.value) : setEventsSearch(e.target.value)}
+                value={activeTab === "leads" ? leadsSearch : activeTab === "events" ? eventsSearch : ""}
+                onChange={(e) => activeTab === "leads" ? setLeadsSearch(e.target.value) : activeTab === "events" ? setEventsSearch(e.target.value) : undefined}
+                disabled={activeTab === "settings"}
               />
             </div>
             <div className="flex items-center gap-3 group cursor-pointer">
@@ -805,6 +880,93 @@ export default function AdminDashboardPage() {
               </>
             )}
 
+            {/* CONDITIONAL SETTINGS VIEW */}
+            {activeTab === "settings" && (
+              <section className="grid grid-cols-1 xl:grid-cols-3 gap-gutter items-start">
+                <div className="xl:col-span-2 bg-surface border border-outline-variant p-8">
+                  <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 border-b border-outline-variant pb-6 mb-8">
+                    <div>
+                      <span className="font-label-caps text-[10px] text-primary uppercase tracking-widest block mb-2">
+                        Public Form Configuration
+                      </span>
+                      <h3 className="font-headline-md text-3xl text-deep-charcoal uppercase tracking-wider">
+                        Event Types
+                      </h3>
+                    </div>
+                    <button
+                      onClick={handleSaveEventTypes}
+                      className="px-6 py-3 bg-primary text-white font-label-caps text-label-caps hover:bg-deep-charcoal transition-all duration-300 uppercase tracking-widest cursor-pointer"
+                    >
+                      Save Types
+                    </button>
+                  </div>
+
+                  <div className="space-y-4">
+                    {draftEventTypes.map((type) => (
+                      <div
+                        key={type}
+                        className="flex items-center justify-between border border-outline-variant bg-white px-4 py-3"
+                      >
+                        <span className="font-serif text-base italic text-on-surface">{type}</span>
+                        <button
+                          onClick={() => handleRemoveEventType(type)}
+                          disabled={draftEventTypes.length <= 1}
+                          className="text-secondary hover:text-error disabled:opacity-30 disabled:hover:text-secondary transition-colors cursor-pointer disabled:cursor-not-allowed"
+                          aria-label={`Remove ${type}`}
+                        >
+                          <span className="material-symbols-outlined text-[20px]">close</span>
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
+                    <input
+                      className="w-full bg-transparent border border-outline-variant py-3 px-4 focus:ring-1 focus:ring-primary focus:border-primary text-sm rounded-none text-on-surface"
+                      placeholder="Add a new event type"
+                      value={newEventTypeName}
+                      onChange={(e) => {
+                        setNewEventTypeName(e.target.value);
+                        setSettingsSaved(false);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          handleAddEventType();
+                        }
+                      }}
+                    />
+                    <button
+                      onClick={handleAddEventType}
+                      className="px-6 py-3 border border-primary text-primary font-label-caps text-label-caps hover:bg-primary hover:text-white transition-all duration-300 uppercase tracking-widest cursor-pointer"
+                    >
+                      Add Type
+                    </button>
+                  </div>
+
+                  {settingsSaved && (
+                    <p className="mt-5 font-label-caps text-[10px] text-status-contacted uppercase tracking-widest">
+                      Event types saved and applied to public/admin forms.
+                    </p>
+                  )}
+                </div>
+
+                <aside className="xl:col-span-1">
+                  <section className="bg-deep-charcoal p-8 text-off-white">
+                    <p className="font-label-caps text-label-caps text-outline-variant mb-2 uppercase tracking-widest">
+                      Live Options
+                    </p>
+                    <h4 className="font-headline-sm text-headline-sm mb-4 italic text-primary-container">
+                      {eventTypeOptions.length} Active Types
+                    </h4>
+                    <p className="text-sm text-outline-variant leading-relaxed">
+                      These values populate the landing inquiry form, manual lead creation, and event scheduling dropdowns.
+                    </p>
+                  </section>
+                </aside>
+              </section>
+            )}
+
           </div>
         </main>
       </div>
@@ -872,10 +1034,9 @@ export default function AdminDashboardPage() {
                     value={newType}
                     onChange={(e) => setNewType(e.target.value)}
                   >
-                    <option>Luxury Wedding</option>
-                    <option>Corporate Gala</option>
-                    <option>Private Celebration</option>
-                    <option>Other</option>
+                    {eventTypeOptions.map((type) => (
+                      <option key={type} value={type}>{type}</option>
+                    ))}
                   </select>
                 </div>
                 <div>
@@ -1007,10 +1168,9 @@ export default function AdminDashboardPage() {
                     value={eventType}
                     onChange={(e) => setEventType(e.target.value)}
                   >
-                    <option>Luxury Wedding</option>
-                    <option>Corporate Gala</option>
-                    <option>Private Celebration</option>
-                    <option>Other</option>
+                    {eventTypeOptions.map((type) => (
+                      <option key={type} value={type}>{type}</option>
+                    ))}
                   </select>
                 </div>
                 <div>

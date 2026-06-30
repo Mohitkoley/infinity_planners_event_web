@@ -32,7 +32,15 @@ export const config = pgTable("config", {
   officeName: text("office_name").notNull(),
 });
 
-// 4. Scheduled Events Table
+// 4. Event Type Options Table
+export const eventTypes = pgTable("event_types", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  name: text("name").unique().notNull(),
+  sortOrder: integer("sort_order").notNull(),
+  createdTime: timestamp("created_time").defaultNow().notNull(),
+});
+
+// 5. Scheduled Events Table
 export const events = pgTable("events", {
   id: uuid("id").primaryKey().defaultRandom(),
   title: text("title").notNull(),
@@ -54,6 +62,9 @@ export type NewUser = typeof users.$inferInsert;
 
 export type Config = typeof config.$inferSelect;
 export type NewConfig = typeof config.$inferInsert;
+
+export type EventType = typeof eventTypes.$inferSelect;
+export type NewEventType = typeof eventTypes.$inferInsert;
 
 export type Event = typeof events.$inferSelect;
 export type NewEvent = typeof events.$inferInsert;
