@@ -277,10 +277,14 @@ export default function LandingPage() {
           {/* Mobile hamburger menu toggle button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-white hover:text-luxury-gold transition-colors focus:outline-none z-50 flex items-center justify-center p-2"
+            className="mobile-menu-button md:hidden text-white hover:text-luxury-gold transition-colors focus:outline-none z-50"
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileMenuOpen}
           >
-            <span className="material-symbols-outlined text-[28px]">
-              {mobileMenuOpen ? "close" : "menu"}
+            <span className={`hamburger-lines ${mobileMenuOpen ? "is-open" : ""}`} aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
             </span>
           </button>
         </div>
@@ -288,35 +292,37 @@ export default function LandingPage() {
 
       {/* Mobile Full Screen Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-luxury-dark/98 backdrop-blur-md flex flex-col justify-center items-center space-y-10 animate-fade-in md:hidden">
+        <div className="mobile-menu-panel fixed inset-0 z-40 bg-luxury-dark/98 backdrop-blur-md flex flex-col justify-center items-center space-y-10 md:hidden">
+          <div className="mobile-menu-rail top-28"></div>
           <Link
             href="#services"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-lg font-medium tracking-widest text-white/90 hover:text-luxury-gold transition-colors uppercase"
+            className="mobile-menu-link text-lg font-medium tracking-widest text-white/90 hover:text-luxury-gold transition-colors uppercase"
           >
             Services
           </Link>
           <Link
             href="#portfolio"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-lg font-medium tracking-widest text-white/90 hover:text-luxury-gold transition-colors uppercase"
+            className="mobile-menu-link text-lg font-medium tracking-widest text-white/90 hover:text-luxury-gold transition-colors uppercase"
           >
             NYC Portfolio
           </Link>
           <Link
             href="#venues"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-lg font-medium tracking-widest text-white/90 hover:text-luxury-gold transition-colors uppercase"
+            className="mobile-menu-link text-lg font-medium tracking-widest text-white/90 hover:text-luxury-gold transition-colors uppercase"
           >
             Venues
           </Link>
           <a
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="bg-luxury-gold text-black px-10 py-4 text-xs font-bold tracking-widest uppercase transition-all duration-300"
+            className="mobile-menu-link bg-luxury-gold text-black px-10 py-4 text-xs font-bold tracking-widest uppercase transition-all duration-300"
           >
             Contact Us
           </a>
+          <div className="mobile-menu-rail bottom-16"></div>
         </div>
       )}
 
@@ -329,9 +335,10 @@ export default function LandingPage() {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             alt="Luxury Event Hall"
-            className="w-full h-full object-cover animate-slow-zoom opacity-70"
+            className="w-full h-full object-cover animate-slow-zoom opacity-55"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgFOVhcsIwURGWBa-Aq7ixRlBtIiCOfVk9m04XUbFDQKadNuWFQJlVey7RO9t_evqq9SdWqKE7JBoHOeJOFEnawlGQZut_n-w2kCEd_rQMwqmxrZXMBteMUlJl7jku0HhKZcyO2tsoelNVy5yTgOKuyn4SPntumqlxlV78uSWdDKFjoMtdM6G7ZgRIDes5o4IS4n8Nh3cgQQ7WPpNB5X-RtaJPXLN_XXbUchzmN1KCj7vgo2huNcJFy7LUs78UN_0oRquO6zNMiPI"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/62 to-black/80"></div>
         </div>
 
         <div className="relative z-20 h-full flex flex-col">
@@ -344,9 +351,23 @@ export default function LandingPage() {
               <p className="text-white/80 text-sm md:text-base tracking-[0.3em] uppercase font-light mb-12 reveal transition-delay-200">
                 Infinity Planners — Redefining Sophistication
               </p>
+              <div className="event-micro-row reveal transition-delay-300" aria-label="Event atmosphere details">
+                <span className="event-micro-icon event-micro-lamp" aria-label="Lighting design" title="Lighting design">
+                  <span className="material-symbols-outlined" aria-hidden="true">emoji_objects</span>
+                </span>
+                <span className="event-micro-icon" aria-label="Celebrations" title="Celebrations">
+                  <span className="material-symbols-outlined" aria-hidden="true">celebration</span>
+                </span>
+                <span className="event-micro-icon" aria-label="Fine dining" title="Fine dining">
+                  <span className="material-symbols-outlined" aria-hidden="true">restaurant</span>
+                </span>
+                <span className="event-micro-icon" aria-label="Floral styling" title="Floral styling">
+                  <span className="material-symbols-outlined" aria-hidden="true">local_florist</span>
+                </span>
+              </div>
               <div className="reveal transition-delay-400">
                 <a
-                  className="inline-block border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-black px-10 py-4 tracking-widest uppercase text-xs transition-all duration-500"
+                  className="luxury-cta inline-block border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-black px-10 py-4 tracking-widest uppercase text-xs transition-all duration-500"
                   href="#services"
                 >
                   Discover Our Craft
@@ -381,12 +402,15 @@ export default function LandingPage() {
             <div className="service-card group reveal transition-delay-100">
               <div className="relative overflow-hidden mb-8 aspect-[4/5]">
                 <div
-                  className="service-img w-full h-full bg-cover bg-center grayscale transition-transform duration-1000 group-hover:scale-105 group-hover:grayscale-0"
+                  className="service-img w-full h-full bg-cover bg-center md:grayscale transition-transform duration-1000 md:group-hover:scale-105 md:group-hover:grayscale-0"
                   style={{
                     backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuBd5XmBC1akXEtKi4SzHRqpB_vLg-E9bQb3jWcNUqmLM92mqkd12l5Md268j_3K80fUBi15FZ-cG_r99WH7DQDSs9NihtwheEvFT4HPIZCbftMn3MLil8U5Ol7BAylzFcwqL2ISMGyuTb-HVVPOeFEHt9KAyxH2_BtNJ8qIeTXx47RDdsA12_AKdQlkXre176NlFbx2r1lE1jjVBbehx6Nf_zlQjx-tthrbDWxIGuxeQcLFqG2so33B7S9fiP6RWlLzFu3NtDJF1po')`,
                   }}
                 ></div>
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-500"></div>
+                <div className="event-card-cue" aria-hidden="true">
+                  <span className="material-symbols-outlined">business_center</span>
+                </div>
               </div>
               <h3 className="font-serif text-2xl mb-4 group-hover:text-luxury-gold transition-colors">
                 Corporate Events
@@ -400,12 +424,15 @@ export default function LandingPage() {
             <div className="service-card group reveal transition-delay-300">
               <div className="relative overflow-hidden mb-8 aspect-[4/5]">
                 <div
-                  className="service-img w-full h-full bg-cover bg-center grayscale transition-transform duration-1000 group-hover:scale-105 group-hover:grayscale-0"
+                  className="service-img w-full h-full bg-cover bg-center md:grayscale transition-transform duration-1000 md:group-hover:scale-105 md:group-hover:grayscale-0"
                   style={{
                     backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJun35tSSBmicejBkBy04W3tNjugUe7jpynGDuh2NH-2bq8I1XRO4wQlI6vilPUt-FigryrrCOpqbmTHDd_k5LaloDRhLFiaHzxTmNYE-RSzJrkn5MapPKgnneRng4-WXpys_nELz0xz8vVrC2euRNmXRBKBNFuCmsulq8mv2DzpON6IQtb7m5uVNIBzyffmDLeNSQnSkeBb84pkspIIrsqNqAE_yZDP8t5p5a54zkL8Dgwwu0SkGs7KmRPbERFokzq06hIVwGiQw')`,
                   }}
                 ></div>
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-500"></div>
+                <div className="event-card-cue" aria-hidden="true">
+                  <span className="material-symbols-outlined">diamond</span>
+                </div>
               </div>
               <h3 className="font-serif text-2xl mb-4 group-hover:text-luxury-gold transition-colors">
                 Luxury Weddings
@@ -419,12 +446,15 @@ export default function LandingPage() {
             <div className="service-card group reveal transition-delay-500">
               <div className="relative overflow-hidden mb-8 aspect-[4/5]">
                 <div
-                  className="service-img w-full h-full bg-cover bg-center grayscale transition-transform duration-1000 group-hover:scale-105 group-hover:grayscale-0"
+                  className="service-img w-full h-full bg-cover bg-center md:grayscale transition-transform duration-1000 md:group-hover:scale-105 md:group-hover:grayscale-0"
                   style={{
                     backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuDwwexES34bDaeAj90xOfiC_vA9pxmNW1_63qRJW3UzXdbeKjjG8wDOG3kdnktVfKmZVi5vWuy9_9wQepZeBoxrkg0ANAYztG_wrgingoA53C6axmT3RM_Kz_OjUi9ztQXdBoKq5JwYCr8UYyMOT76_1Bznw4gB9HTXW_nf-5CZDIG2GPlBL0wKlWGeL_gYve0-3kG7xkJ9n0D_GYbsjyJXw6hsY7VcvIVYYVRodboPD3Nu-d6YsdNcGKziP55f2jMq14e_BUdWcZQ')`,
                   }}
                 ></div>
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-500"></div>
+                <div className="event-card-cue" aria-hidden="true">
+                  <span className="material-symbols-outlined">local_bar</span>
+                </div>
               </div>
               <h3 className="font-serif text-2xl mb-4 group-hover:text-luxury-gold transition-colors">
                 Private Galas
@@ -460,10 +490,10 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 reveal">
             {/* The Plaza Hotel */}
-            <div className="relative group cursor-pointer overflow-hidden aspect-video border border-white/5">
+            <div className="portfolio-card relative group cursor-pointer overflow-hidden aspect-video border border-white/5">
               <img
                 alt="Plaza Hotel Gala"
-                className="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-105 group-hover:grayscale-0"
+                className="w-full h-full object-cover md:grayscale transition-transform duration-1000 md:group-hover:scale-105 md:group-hover:grayscale-0"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD8w8Yhah_jBfULiZrwme8pJbB5KR6FVLX5rd3Xba4xCFF6tTnzAh4vNOkgylq-Zh9-EXI11jHowPiOeXvwuL17FjUU9G1Dn2rBqo2z5vk4e6ivhgi-9qJ52-L8ZQG9vczCoFUpIz3lNDeH_6_0TGKAA4xGKrhVYwByppUOBzPlDjQssYg6tyyta_XEKftUxgzIz5J6sb2rmyLC3uCyb7I2IMOZZfoXYm__UuYj_yglMACxuq8GqyqjDctU2XKDIuaFN4cFpU52IE"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -473,10 +503,10 @@ export default function LandingPage() {
             </div>
 
             {/* SoHo Skylines */}
-            <div className="relative group cursor-pointer overflow-hidden aspect-video border border-white/5">
+            <div className="portfolio-card relative group cursor-pointer overflow-hidden aspect-video border border-white/5">
               <img
                 alt="Soho Rooftop Event"
-                className="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-105 group-hover:grayscale-0"
+                className="w-full h-full object-cover md:grayscale transition-transform duration-1000 md:group-hover:scale-105 md:group-hover:grayscale-0"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1-hV5LXxxXJMuUCWsBq-mOnDWpNCmJ-1xBgzgTy1HjAyoWwg3j9FTrSdx4R38Tqdr3T0igEIYjgqX8mrOnMkciLzU_j-qWxO9T9R1corJJxXqfhOkf9YXUUtx8D1KYuv0K5QRLuvbBIA5GwAIMhlPclaDRYP8iRYu7df4QJKI1o-nMtkh0kHqpOalUNK1XmY9n61AZlCw3qUTYQv1I_NE6VBPHyvKn6MbsX8oYdfTrxoc4yQHdtrVwhigKPXZXUF1_NxDT5w6yjQ"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
