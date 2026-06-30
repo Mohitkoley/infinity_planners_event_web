@@ -356,9 +356,8 @@ export default function LandingPage() {
         {/* Scroll indicator chevron */}
         <a
           href="#services"
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white text-center animate-bounce cursor-pointer flex flex-col items-center gap-2"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white text-center animate-bounce cursor-pointer"
         >
-          <p className="text-[10px] tracking-[0.4em] uppercase">Scroll</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="text-white/50 w-8 h-8">
             <path d="m6 9 6 6 6-6"></path>
           </svg>
