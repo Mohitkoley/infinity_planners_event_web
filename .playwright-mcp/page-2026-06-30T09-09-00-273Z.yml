@@ -1,0 +1,115 @@
+- generic [active] [ref=f1e1]:
+  - button "Open Next.js Dev Tools" [ref=f1e41] [cursor=pointer]:
+    - img [ref=f1e42]
+  - alert [ref=f1e45]
+  - generic [ref=f1e48]:
+    - complementary [ref=f1e49]:
+      - generic [ref=f1e50]:
+        - link "Infinity Planners" [ref=f1e51] [cursor=pointer]:
+          - /url: /
+          - heading "Infinity Planners" [level=1] [ref=f1e52]
+        - paragraph [ref=f1e53]: Event Software
+      - navigation [ref=f1e54]:
+        - button "leaderboard Leads" [ref=f1e55] [cursor=pointer]:
+          - generic [ref=f1e56]: leaderboard
+          - generic [ref=f1e57]: Leads
+        - button "event Events" [ref=f1e58] [cursor=pointer]:
+          - generic [ref=f1e59]: event
+          - generic [ref=f1e60]: Events
+      - button "New Event" [ref=f1e155] [cursor=pointer]
+    - generic [ref=f1e63]:
+      - banner [ref=f1e64]:
+        - heading "Events Scheduling" [level=2] [ref=f1e156]
+        - generic [ref=f1e67]:
+          - generic [ref=f1e68]:
+            - generic [ref=f1e69]: search
+            - textbox "Search scheduled events..." [ref=f1e157]
+          - generic [ref=f1e71] [cursor=pointer]:
+            - generic [ref=f1e72]:
+              - paragraph [ref=f1e73]: Administrator
+              - paragraph [ref=f1e74]: Infinity Curator
+            - img "Administrator Profile" [ref=f1e77]
+      - main [ref=f1e78]:
+        - generic [ref=f1e79]:
+          - generic [ref=f1e158]:
+            - generic [ref=f1e159]:
+              - paragraph [ref=f1e160]: Total Scheduled
+              - generic [ref=f1e161]:
+                - heading "2" [level=3] [ref=f1e162]
+                - generic [ref=f1e163]: Live Staging
+            - generic [ref=f1e166]:
+              - paragraph [ref=f1e167]: Active Pipeline
+              - generic [ref=f1e168]:
+                - heading "2" [level=3] [ref=f1e169]
+                - generic [ref=f1e170]: Scheduled
+            - generic [ref=f1e173]:
+              - paragraph [ref=f1e174]: Completed Events
+              - generic [ref=f1e175]:
+                - heading "0" [level=3] [ref=f1e176]
+                - generic [ref=f1e177]: Delivered
+          - generic [ref=f1e180]:
+            - generic [ref=f1e181]:
+              - generic [ref=f1e182]:
+                - heading "Scheduled Events" [level=4] [ref=f1e183]
+                - generic [ref=f1e184]: 2 Events Listed
+              - table [ref=f1e186]:
+                - rowgroup [ref=f1e187]:
+                  - row "Event Title Client Details Type Status Event Date" [ref=f1e188]:
+                    - columnheader "Event Title" [ref=f1e189]
+                    - columnheader "Client Details" [ref=f1e190]
+                    - columnheader "Type" [ref=f1e191]
+                    - columnheader "Status" [ref=f1e192]
+                    - columnheader "Event Date" [ref=f1e193]
+                - rowgroup [ref=f1e194]:
+                  - 'row "Plaza Hotel Winter Gala ID: fe93ebad Goldman Sachs Exec events@gs.com Corporate Gala Scheduled 2024-11-20" [ref=f1e195] [cursor=pointer]':
+                    - 'cell "Plaza Hotel Winter Gala ID: fe93ebad" [ref=f1e196]':
+                      - paragraph [ref=f1e197]: Plaza Hotel Winter Gala
+                      - generic [ref=f1e198]: "ID: fe93ebad"
+                    - cell "Goldman Sachs Exec events@gs.com" [ref=f1e199]:
+                      - paragraph [ref=f1e200]: Goldman Sachs Exec
+                      - paragraph [ref=f1e201]: events@gs.com
+                    - cell "Corporate Gala" [ref=f1e202]
+                    - cell "Scheduled" [ref=f1e203]:
+                      - generic [ref=f1e204]: Scheduled
+                    - cell "2024-11-20" [ref=f1e205]
+                  - 'row "Juliana & Marcus Wedding ID: 2f365930 Juliana Vane juliana@vane.co Luxury Wedding Scheduled 2024-10-12" [ref=f1e206] [cursor=pointer]':
+                    - 'cell "Juliana & Marcus Wedding ID: 2f365930" [ref=f1e207]':
+                      - paragraph [ref=f1e208]: Juliana & Marcus Wedding
+                      - generic [ref=f1e209]: "ID: 2f365930"
+                    - cell "Juliana Vane juliana@vane.co" [ref=f1e210]:
+                      - paragraph [ref=f1e211]: Juliana Vane
+                      - paragraph [ref=f1e212]: juliana@vane.co
+                    - cell "Luxury Wedding" [ref=f1e213]
+                    - cell "Scheduled" [ref=f1e214]:
+                      - generic [ref=f1e215]: Scheduled
+                    - cell "2024-10-12" [ref=f1e216]
+            - complementary [ref=f1e217]:
+              - generic [ref=f1e218]:
+                - generic [ref=f1e219]:
+                  - heading "Studio Details" [level=4] [ref=f1e220]
+                  - generic [ref=f1e221]:
+                    - generic [ref=f1e222]:
+                      - paragraph [ref=f1e223]: Contact
+                      - paragraph [ref=f1e224]: hello@infinityplanners.nyc
+                      - paragraph [ref=f1e225]: +1 (516) 344-7239
+                    - generic [ref=f1e226]:
+                      - paragraph [ref=f1e227]: Address
+                      - paragraph [ref=f1e228]: 545 Madison Avenue, 12th Floor, New York, NY 10022
+                    - generic [ref=f1e229]:
+                      - paragraph [ref=f1e230]: Location Name
+                      - paragraph [ref=f1e231]: Manhattan Office
+                    - generic [ref=f1e232]:
+                      - generic [ref=f1e233]:
+                        - img "Manhattan Office" [ref=f1e234]
+                        - generic [ref=f1e236]: location_on
+                      - generic [ref=f1e237]:
+                        - generic [ref=f1e238]: "Lat: 40.7589"
+                        - generic [ref=f1e239]: "Long: -73.9855"
+                - generic [ref=f1e240]:
+                  - paragraph [ref=f1e241]: Efficiency Goal
+                  - heading "The Art of Precision" [level=5] [ref=f1e242]
+                  - paragraph [ref=f1e243]: Maintaining a response time under 2 hours for premium inquiries is our standard for Q4.
+                  - link "Visit Landing Page arrow_forward" [ref=f1e244] [cursor=pointer]:
+                    - /url: /
+                    - generic [ref=f1e245]: Visit Landing Page
+                    - generic [ref=f1e246]: arrow_forward

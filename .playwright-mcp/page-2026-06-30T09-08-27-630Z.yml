@@ -1,0 +1,39 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - main [ref=f1e3]:
+      - generic [ref=f1e4]:
+        - link "Infinity Planners" [ref=f1e5] [cursor=pointer]:
+          - /url: /
+          - heading "Infinity Planners" [level=1] [ref=f1e6]
+        - paragraph [ref=f1e7]: Event Software
+      - generic [ref=f1e8]:
+        - heading "Admin Portal" [level=2] [ref=f1e10]
+        - generic [ref=f1e12]:
+          - generic [ref=f1e13]:
+            - generic [ref=f1e14]: Email Address
+            - generic [ref=f1e15]:
+              - textbox "Email Address" [ref=f1e16]:
+                - /placeholder: executive@infinityplanners.nyc
+              - generic [ref=f1e17]: mail
+          - generic [ref=f1e18]:
+            - generic [ref=f1e19]:
+              - generic [ref=f1e20]: Password
+              - link "Forgot Password?" [ref=f1e21] [cursor=pointer]:
+                - /url: "#"
+            - generic [ref=f1e22]:
+              - textbox "Password" [ref=f1e23]:
+                - /placeholder: ••••••••
+              - generic [ref=f1e24]: lock
+          - generic [ref=f1e25]:
+            - checkbox "Remember this station" [ref=f1e26] [cursor=pointer]
+            - generic [ref=f1e27] [cursor=pointer]: Remember this station
+          - button "Sign In" [ref=f1e28] [cursor=pointer]
+      - generic [ref=f1e29]:
+        - generic [ref=f1e30]:
+          - generic [ref=f1e31]: verified_user
+          - paragraph [ref=f1e32]: Secure Admin Access
+        - paragraph [ref=f1e33]: Authorized personnel only. All access attempts are monitored and logged.
+    - paragraph [ref=f1e35]: Est. 2024
+  - button "Open Next.js Dev Tools" [ref=f1e41] [cursor=pointer]:
+    - img [ref=f1e42]
+  - alert [ref=f1e45]
