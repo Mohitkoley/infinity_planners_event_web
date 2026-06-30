@@ -409,7 +409,12 @@ export default function LandingPage() {
                 ></div>
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-500"></div>
                 <div className="event-card-cue" aria-hidden="true">
-                  <span className="material-symbols-outlined">business_center</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M8 7V5.8C8 4.8 8.8 4 9.8 4h4.4c1 0 1.8.8 1.8 1.8V7" />
+                    <path d="M5.5 8h13c.8 0 1.5.7 1.5 1.5v7c0 .8-.7 1.5-1.5 1.5h-13c-.8 0-1.5-.7-1.5-1.5v-7C4 8.7 4.7 8 5.5 8Z" />
+                    <path d="M4 12.5h16" />
+                    <path d="M10 12.5h4" />
+                  </svg>
                 </div>
               </div>
               <h3 className="font-serif text-2xl mb-4 group-hover:text-luxury-gold transition-colors">
@@ -431,7 +436,13 @@ export default function LandingPage() {
                 ></div>
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-500"></div>
                 <div className="event-card-cue" aria-hidden="true">
-                  <span className="material-symbols-outlined">diamond</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7.2 5h9.6l3.2 4.2L12 20 4 9.2 7.2 5Z" />
+                    <path d="M4 9.2h16" />
+                    <path d="M9 9.2 12 20l3-10.8" />
+                    <path d="M8.2 5 9 9.2" />
+                    <path d="M15.8 5 15 9.2" />
+                  </svg>
                 </div>
               </div>
               <h3 className="font-serif text-2xl mb-4 group-hover:text-luxury-gold transition-colors">
@@ -453,7 +464,12 @@ export default function LandingPage() {
                 ></div>
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-500"></div>
                 <div className="event-card-cue" aria-hidden="true">
-                  <span className="material-symbols-outlined">local_bar</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 4h10l-1.2 6.2A3.9 3.9 0 0 1 12 13.4a3.9 3.9 0 0 1-3.8-3.2L7 4Z" />
+                    <path d="M8.4 8h7.2" />
+                    <path d="M12 13.5V19" />
+                    <path d="M9 20h6" />
+                  </svg>
                 </div>
               </div>
               <h3 className="font-serif text-2xl mb-4 group-hover:text-luxury-gold transition-colors">
