@@ -353,16 +353,41 @@ export default function LandingPage() {
               </p>
               <div className="event-micro-row reveal transition-delay-300" aria-label="Event atmosphere details">
                 <span className="event-micro-icon event-micro-lamp" aria-label="Lighting design" title="Lighting design">
-                  <span className="material-symbols-outlined" aria-hidden="true">emoji_objects</span>
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9 18h6" />
+                    <path d="M10 22h4" />
+                    <path d="M8.5 14.5c-1.2-1-2-2.5-2-4.2A5.5 5.5 0 0 1 12 4.8a5.5 5.5 0 0 1 5.5 5.5c0 1.7-.8 3.2-2 4.2-.6.5-.9 1.1-.9 1.8H9.4c0-.7-.3-1.3-.9-1.8Z" />
+                    <path d="M12 2v1" />
+                    <path d="m19 5-1 .9" />
+                    <path d="m5 5 1 .9" />
+                  </svg>
                 </span>
                 <span className="event-micro-icon" aria-label="Celebrations" title="Celebrations">
-                  <span className="material-symbols-outlined" aria-hidden="true">celebration</span>
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="m5 19 5.2-13.2L18.2 14 5 19Z" />
+                    <path d="m9.5 8.8 5.7 5.7" />
+                    <path d="M16 5.5c1.5-1.2 3-.7 3.8.2" />
+                    <path d="M14.5 3.5c.4-.9 1.2-1.4 2.2-1.4" />
+                    <path d="M18.8 9.2c1.1-.1 2 .4 2.6 1.3" />
+                  </svg>
                 </span>
                 <span className="event-micro-icon" aria-label="Fine dining" title="Fine dining">
-                  <span className="material-symbols-outlined" aria-hidden="true">restaurant</span>
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 3v8" />
+                    <path d="M4.5 3v5.5A2.5 2.5 0 0 0 7 11a2.5 2.5 0 0 0 2.5-2.5V3" />
+                    <path d="M7 11v10" />
+                    <path d="M17 3c1.7 1.7 2.5 4 2.5 6.5 0 2.3-.9 4-2.5 4V21" />
+                    <path d="M17 3v18" />
+                  </svg>
                 </span>
                 <span className="event-micro-icon" aria-label="Floral styling" title="Floral styling">
-                  <span className="material-symbols-outlined" aria-hidden="true">local_florist</span>
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 12c-2.8-1.4-3.8-4-2.4-6.4 2.7.4 4.4 2.4 2.4 6.4Z" />
+                    <path d="M12 12c2.8-1.4 3.8-4 2.4-6.4-2.7.4-4.4 2.4-2.4 6.4Z" />
+                    <path d="M12 12v9" />
+                    <path d="M12 17c-2.9 0-5-1.6-6-4.5 3.4-.5 5.4.8 6 4.5Z" />
+                    <path d="M12 17c2.9 0 5-1.6 6-4.5-3.4-.5-5.4.8-6 4.5Z" />
+                  </svg>
                 </span>
               </div>
               <div className="reveal transition-delay-400">
